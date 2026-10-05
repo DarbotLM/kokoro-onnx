@@ -1,4 +1,7 @@
-# kokoro-onnx
+---
+title: kokoro-onnx
+description: Kokoro speech synthesis using ONNX Runtime on Python 3.14.
+---
 
 [Complete speech-stack wiki](https://dayour.github.io/kokoro-onnx/) |
 [Fork releases](https://github.com/dayour/kokoro-onnx/releases)
@@ -39,6 +42,11 @@ uv sync --locked
 
 The commands below describe upstream package installation; they do not install
 this fork until a corresponding package release is published.
+
+For the corrected audio reconstruction, export a new model with this fork's
+[export workflow](BUILDING.md#audio-reconstruction) and the corrected sibling
+Kokoro source. The upstream model downloads below are not rebuilt by installing
+this package. Do not use them as evidence that the reconstruction repair is active.
 
 ```console
 pip install -U kokoro-onnx

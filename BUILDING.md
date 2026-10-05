@@ -1,4 +1,7 @@
-# Building
+---
+title: Building
+description: Build the Python runtime and export Kokoro checkpoints to ONNX.
+---
 
 Build and publish with Python 3.14, the minimum and default interpreter.
 Package builds require Hatchling 1.32+ (below 2.0).
@@ -57,6 +60,41 @@ FP16 conversion uses ONNX IR 1.x to sort the graph and nested Loop dependencies
 before ONNX validation, avoiding unsupported symbolic Cast optimizations.
 It deliberately uses the legacy TorchScript exporter (`dynamo=False`) for the
 model's dynamic durations and existing ONNX graph contract.
+
+### Audio reconstruction
+
+The exporter loads trained weights with native STFT, then lowers only the
+transform to the sibling Kokoro checkout's real-valued `CustomSTFT`. Native
+complex operations cannot be traced by this exporter. The lowering must preserve
+reflection padding, centered Hann windows, one-sided Fourier weights and
+squared-window overlap normalization. The exporter checks these semantics before
+tracing; older approximate implementations fail instead of producing a bad model.
+
+Exporting requires the corrected sibling Kokoro source. Updating the Python
+runtime package alone does not repair an existing `.onnx` file. Export a fresh
+full-precision graph using the original checkpoint and configuration:
+
+```powershell
+uv run scripts\export.py -c checkpoints\config.json -p checkpoints\kokoro-v1_0.pth -o kokoro-v1.0.onnx -v am_liam
+```
+
+The production graph retains normal random excitation and its three inputs:
+`input_ids`, `style`, and floating-point `speed`. It contains no injected noise
+inputs, noise removal, or post-synthesis cleanup filter. Full waveform samples
+are not compared across runtimes because their random generators differ.
+
+By default, the existing verifier checks duration parity, variable input lengths,
+fractional speeds, finite/non-silent output, amplitude and raw DC offset.
+Model replacement occurs only after all requested variants pass. A sibling
+`.verification.json` records the output SHA-256 and measurements.
+`--skip-verify` explicitly bypasses runtime verification and does not emit that
+report; it is not appropriate for an a2swe production model.
+
+For a2swe, update `library/assets/speech/models.json` when replacing model bytes,
+then run its core `audio-render --root PROJECT --engine both --voice PROFILE`
+command. Audio and comparison evidence go in the project's `qc/audio/PROFILE/`.
+Its core checks the registered model hash before synthesis.
+Existing rendered videos remain unchanged until regenerated.
 
 Voice fetching uses Python 3.14 and PyTorch 2.14+ (below 3.0):
 
