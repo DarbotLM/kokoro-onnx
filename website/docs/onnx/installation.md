@@ -23,7 +23,9 @@ tts = Kokoro("kokoro-v1.0.onnx", "voices-v1.0.bin")
 try:
     audio, sample_rate = tts.create(
         "Hello from the Python 3.14 speech stack.",
-        voice="af_heart", speed=1.0, lang="en-us",
+        voice="af_heart",
+        speed=1.0,
+        lang="en-us",
     )
     sf.write("hello.wav", audio, sample_rate, subtype="PCM_16")
 finally:

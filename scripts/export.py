@@ -74,16 +74,18 @@ def sample_style(voice: str, length: int) -> torch.Tensor:
     )
     from huggingface_hub import hf_hub_download
 
-    pack = torch.load(
-        hf_hub_download(repo, f"voices/{voice}.pt"), weights_only=True
-    )
+    pack = torch.load(hf_hub_download(repo, f"voices/{voice}.pt"), weights_only=True)
     if not 0 < length <= len(pack):
         raise ValueError(f"Voice {voice} has no style for {length} phonemes")
     return pack[length - 1]
 
 
-def sample_inputs(model: KModelForONNX, voice: str, phonemes: str = SAMPLE_PHONEMES,
-                  speed: float = 1.0) -> tuple[torch.Tensor, ...]:
+def sample_inputs(
+    model: KModelForONNX,
+    voice: str,
+    phonemes: str = SAMPLE_PHONEMES,
+    speed: float = 1.0,
+) -> tuple[torch.Tensor, ...]:
     """Inputs shaped like a real call, used to trace and to verify the graph."""
     vocab = model.kmodel.vocab
     ids = [vocab[p] for p in phonemes if p in vocab]
@@ -164,38 +166,55 @@ def lower_stft(model: KModelForONNX) -> TorchSTFT:
     if not isinstance(native, TorchSTFT):
         raise TypeError("Export requires the native STFT as its reference")
     lowered = CustomSTFT(
-        native.filter_length, native.hop_length, native.win_length,
-        center=True, pad_mode="reflect",
+        native.filter_length,
+        native.hop_length,
+        native.win_length,
+        center=True,
+        pad_mode="reflect",
     ).eval()
     size = native.filter_length * 20 + 3
     samples = torch.arange(size, dtype=torch.float32)
-    signals = torch.stack([
-        torch.ones(size), torch.sin(2 * torch.pi * 440 * samples / SAMPLE_RATE),
-        torch.cos(torch.pi * samples),
-    ])
+    signals = torch.stack(
+        [
+            torch.ones(size),
+            torch.sin(2 * torch.pi * 440 * samples / SAMPLE_RATE),
+            torch.cos(torch.pi * samples),
+        ]
+    )
     with torch.inference_mode():
         magnitude, phase = native.transform(signals)
         torch.testing.assert_close(
-            lowered.inverse(magnitude, phase), native.inverse(magnitude, phase),
-            atol=2e-6, rtol=2e-5,
+            lowered.inverse(magnitude, phase),
+            native.inverse(magnitude, phase),
+            atol=2e-6,
+            rtol=2e-5,
         )
         lowered_magnitude, lowered_phase = lowered.transform(signals)
         torch.testing.assert_close(lowered_magnitude, magnitude, atol=2e-5, rtol=2e-5)
         torch.testing.assert_close(
-            lowered_magnitude * torch.sin(lowered_phase), magnitude * torch.sin(phase),
-            atol=2e-5, rtol=2e-5,
+            lowered_magnitude * torch.sin(lowered_phase),
+            magnitude * torch.sin(phase),
+            atol=2e-5,
+            rtol=2e-5,
         )
         torch.testing.assert_close(
-            lowered_magnitude * torch.cos(lowered_phase), magnitude * torch.cos(phase),
-            atol=2e-5, rtol=2e-5,
+            lowered_magnitude * torch.cos(lowered_phase),
+            magnitude * torch.cos(phase),
+            atol=2e-5,
+            rtol=2e-5,
         )
     generator.stft = lowered
     print("validated native-equivalent real-valued STFT lowering")
     return native
 
 
-def verify(model: KModelForONNX, path: Path, voice: str, strict: bool = True,
-           native: TorchSTFT | None = None) -> dict:
+def verify(
+    model: KModelForONNX,
+    path: Path,
+    voice: str,
+    strict: bool = True,
+    native: TorchSTFT | None = None,
+) -> dict:
     """Check the unmodified graph's durations and raw audio.
 
     Excitation is stochastic, so waveform samples need not match across runtimes.
@@ -205,8 +224,11 @@ def verify(model: KModelForONNX, path: Path, voice: str, strict: bool = True,
     if {i.name for i in session.get_inputs()} != {"input_ids", "style", "speed"}:
         raise ValueError("Export must accept only input_ids, style and speed")
     results = []
-    for speed, phonemes in [(1.0, SAMPLE_PHONEMES), (0.9, SAMPLE_PHONEMES.split(",")[0] + "."),
-                             (1.2, SAMPLE_PHONEMES * 2)]:
+    for speed, phonemes in [
+        (1.0, SAMPLE_PHONEMES),
+        (0.9, SAMPLE_PHONEMES.split(",")[0] + "."),
+        (1.2, SAMPLE_PHONEMES * 2),
+    ]:
         inputs = sample_inputs(model, voice, phonemes, speed)
         feed = dict(zip(("input_ids", "style", "speed"), (t.numpy() for t in inputs)))
         lowered = model.kmodel.decoder.generator.stft
@@ -222,9 +244,13 @@ def verify(model: KModelForONNX, path: Path, voice: str, strict: bool = True,
             np.testing.assert_array_equal(duration, expected_duration.numpy())
         if not np.isfinite(waveform).all() or waveform.ndim != 1 or not waveform.size:
             raise ValueError("Export returned empty or nonfinite waveform")
-        if (duration.shape != (inputs[0].shape[1],) or not np.isfinite(duration).all()
-                or np.any(duration <= 0) or not np.equal(duration, np.floor(duration)).all()
-                or len(waveform) != int(np.sum(duration)) * FRAME):
+        if (
+            duration.shape != (inputs[0].shape[1],)
+            or not np.isfinite(duration).all()
+            or np.any(duration <= 0)
+            or not np.equal(duration, np.floor(duration)).all()
+            or len(waveform) != int(np.sum(duration)) * FRAME
+        ):
             raise ValueError("Export waveform and token durations disagree")
         peak = float(np.abs(waveform).max())
         rms = float(np.sqrt(np.mean(waveform.astype(np.float64) ** 2)))
@@ -235,13 +261,21 @@ def verify(model: KModelForONNX, path: Path, voice: str, strict: bool = True,
         if not 0.5 < rms / reference_rms < 2:
             raise ValueError("Export RMS diverges from the native model")
         result = {
-            "speed": speed, "tokens": inputs[0].shape[1], "samples": len(waveform),
-            "peak": peak, "rms": rms, "dc": dc, "reference_rms": reference_rms,
+            "speed": speed,
+            "tokens": inputs[0].shape[1],
+            "samples": len(waveform),
+            "peak": peak,
+            "rms": rms,
+            "dc": dc,
+            "reference_rms": reference_rms,
         }
         results.append(result)
         print(f"  verified {result}")
-    return {"duration_parity": strict, "waveform_sample_parity": "not_applicable_stochastic_excitation",
-            "cases": results}
+    return {
+        "duration_parity": strict,
+        "waveform_sample_parity": "not_applicable_stochastic_excitation",
+        "cases": results,
+    }
 
 
 def quantize(path: Path, fp16: bool, int8: bool) -> list[Path]:
@@ -298,7 +332,9 @@ def main() -> None:
     ).eval()
 
     native = lower_stft(model)
-    with tempfile.TemporaryDirectory(prefix=".kokoro-export-", dir=output.parent) as root:
+    with tempfile.TemporaryDirectory(
+        prefix=".kokoro-export-", dir=output.parent
+    ) as root:
         candidate = Path(root) / output.name
         export(model, candidate, args.voice)
         embed_config(candidate, Path(args.config))
@@ -306,7 +342,9 @@ def main() -> None:
         for path in [candidate, *variants]:
             if not args.skip_verify:
                 print(path.name)
-                result = verify(model, path, args.voice, strict=path == candidate, native=native)
+                result = verify(
+                    model, path, args.voice, strict=path == candidate, native=native
+                )
                 with path.open("rb") as stream:
                     result["sha256"] = hashlib.file_digest(stream, "sha256").hexdigest()
                 result["voice"] = args.voice

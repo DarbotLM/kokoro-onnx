@@ -32,4 +32,4 @@ Record driver version, runtime package versions, model hash, requested provider,
 active session providers, sample count, finite-output check, and inference time.
 Test the production precision format; CPU FP32 success does not certify GPU INT8.
 
-Source: [session creation](https://github.com/dayour/kokoro-onnx/blob/main/src/kokoro_onnx/session.py).
+Source: [session creation](https://github.com/DarbotLM/kokoro-onnx/blob/main/src/kokoro_onnx/session.py).

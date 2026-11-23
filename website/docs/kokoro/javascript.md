@@ -40,4 +40,4 @@ The npm package name is shared with upstream. To use this fork, build the local
 checkout or install its release package artifact rather than assuming an npm
 registry install contains the fork's changes.
 
-Source: [library README](https://github.com/dayour/kokoro/blob/main/kokoro.js/README.md).
+Source: [library README](https://github.com/DarbotLM/kokoro/blob/main/kokoro.js/README.md).

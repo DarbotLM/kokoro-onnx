@@ -8,9 +8,9 @@ require `>=3.14,<3.15`. Use Node.js 24 for the JavaScript projects and this wiki
 Clone the repositories as siblings so existing uv source mappings resolve:
 
 ```powershell
-git clone https://github.com/dayour/misaki.git
-git clone https://github.com/dayour/kokoro.git
-git clone https://github.com/dayour/kokoro-onnx.git
+git clone https://github.com/DarbotLM/misaki.git
+git clone https://github.com/DarbotLM/kokoro.git
+git clone https://github.com/DarbotLM/kokoro-onnx.git
 cd kokoro-onnx
 uv sync --locked
 ```

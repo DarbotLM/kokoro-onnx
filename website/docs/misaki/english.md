@@ -38,5 +38,5 @@ Supply phonemes appropriate for the model vocabulary. For an ONNX integration,
 pass the resulting phoneme string with `is_phonemes=True` so it is not phonemized
 twice.
 
-Source: [English engine](https://github.com/dayour/misaki/blob/main/misaki/en.py)
-and [fallback](https://github.com/dayour/misaki/blob/main/misaki/espeak.py).
+Source: [English engine](https://github.com/DarbotLM/misaki/blob/main/misaki/en.py)
+and [fallback](https://github.com/DarbotLM/misaki/blob/main/misaki/espeak.py).

@@ -27,5 +27,5 @@ Hebrew is not supported by this fork's dependency set. The old extra was removed
 because its upstream package was unavailable and the replacement excluded
 Python 3.14.
 
-Source of truth: [optional dependencies](https://github.com/dayour/misaki/blob/main/pyproject.toml)
-and [language examples](https://github.com/dayour/kokoro-onnx/tree/main/examples).
+Source of truth: [optional dependencies](https://github.com/DarbotLM/misaki/blob/main/pyproject.toml)
+and [language examples](https://github.com/DarbotLM/kokoro-onnx/tree/main/examples).

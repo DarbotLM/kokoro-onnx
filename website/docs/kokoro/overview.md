@@ -2,7 +2,7 @@
 title: Kokoro repository overview
 ---
 
-[dayour/kokoro](https://github.com/dayour/kokoro) contains two distinct toolchains:
+[dayour/kokoro](https://github.com/DarbotLM/kokoro) contains two distinct toolchains:
 
 | Directory | Runtime | Role |
 | --- | --- | --- |

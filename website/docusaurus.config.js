@@ -16,7 +16,7 @@ const config = {
         docs: {
           routeBasePath: "/",
           sidebarPath: "./sidebars.js",
-          editUrl: "https://github.com/dayour/kokoro-onnx/edit/main/website/",
+          editUrl: "https://github.com/DarbotLM/kokoro-onnx/edit/main/website/",
           showLastUpdateTime: true,
         },
         blog: false,
@@ -38,7 +38,7 @@ const config = {
       items: [
         { type: "docSidebar", sidebarId: "wiki", label: "Wiki", position: "left" },
         { to: "/releases", label: "Downloads", position: "left" },
-        { href: "https://github.com/dayour/kokoro-onnx", label: "GitHub", position: "right" },
+        { href: "https://github.com/DarbotLM/kokoro-onnx", label: "GitHub", position: "right" },
       ],
     },
     footer: {

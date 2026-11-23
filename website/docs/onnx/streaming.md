@@ -10,17 +10,21 @@ import asyncio
 from contextlib import aclosing
 from kokoro_onnx import Kokoro
 
+
 async def main():
     tts = Kokoro("kokoro-v1.0.onnx", "voices-v1.0.bin")
     try:
-        async with aclosing(tts.create_stream(
-            "First sentence. A second sentence follows.",
-            voice="af_heart",
-        )) as stream:
+        async with aclosing(
+            tts.create_stream(
+                "First sentence. A second sentence follows.",
+                voice="af_heart",
+            )
+        ) as stream:
             async for audio, sample_rate in stream:
                 print(len(audio), sample_rate)
     finally:
         tts.voices.close()
+
 
 asyncio.run(main())
 ```

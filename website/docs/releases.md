@@ -6,20 +6,38 @@ Use the fork release pages, not similarly named upstream PyPI/npm packages:
 
 | Fork | Release page | Typical Python artifact |
 | --- | --- | --- |
-| Kokoro ONNX | [Downloads](https://github.com/dayour/kokoro-onnx/releases) | `kokoro_onnx-0.6.1-py3-none-any.whl` |
-| Kokoro | [Downloads](https://github.com/dayour/kokoro/releases) | `kokoro-0.9.4-py3-none-any.whl` |
-| Misaki | [Downloads](https://github.com/dayour/misaki/releases) | `misaki-0.9.4+py314.1-py3-none-any.whl` |
+| Kokoro ONNX | [Downloads](https://github.com/DarbotLM/kokoro-onnx/releases) | `kokoro_onnx-0.6.1-py3-none-any.whl` |
+| Kokoro | [Downloads](https://github.com/DarbotLM/kokoro/releases) | `kokoro-0.9.4-py3-none-any.whl` |
+| Misaki | [Downloads](https://github.com/DarbotLM/misaki/releases) | `misaki-0.9.4+py314.1-py3-none-any.whl` |
+
+## November 22, 2026 build
+
+The `py314-2026.11.22` releases supersede the package bytes from September:
+
+- [ONNX release](https://github.com/DarbotLM/kokoro-onnx/releases/tag/py314-2026.11.22):
+  corrected release/export workflow, export lowering and verification, and clean
+  Python 3.14 package artifacts.
+- [Kokoro release](https://github.com/DarbotLM/kokoro/releases/tag/py314-2026.11.22):
+  corrected real-valued STFT reconstruction, Python wheel/source distribution,
+  npm package, production web-demo ZIP, checksums, and provenance.
+- [Misaki release](https://github.com/DarbotLM/misaki/releases/tag/py314-2026.11.22):
+  paired Python wheel/source distribution, checksums, and provenance.
+
+The Python package versions remain `0.6.1`, `0.9.4`, and `0.9.4+py314.1`; the
+release tag records a corrected immutable build. The corrected Kokoro source
+must be used to export a fresh ONNX graph; installing the Python package does
+not modify an older model file.
 
 ## September 17, 2026 build
 
 The `py314-2026.09.17` releases are published:
 
-- [ONNX release](https://github.com/dayour/kokoro-onnx/releases/tag/py314-2026.09.17):
+- [ONNX release](https://github.com/DarbotLM/kokoro-onnx/releases/tag/py314-2026.09.17):
   Python wheel, source distribution, checksums, and provenance.
-- [Kokoro release](https://github.com/dayour/kokoro/releases/tag/py314-2026.09.17):
+- [Kokoro release](https://github.com/DarbotLM/kokoro/releases/tag/py314-2026.09.17):
   Python wheel/source distribution, `kokoro-js-1.2.1.tgz`, production web-demo ZIP,
   checksums, and provenance.
-- [Misaki release](https://github.com/dayour/misaki/releases/tag/py314-2026.09.17):
+- [Misaki release](https://github.com/DarbotLM/misaki/releases/tag/py314-2026.09.17):
   Python wheel, source distribution, checksums, and provenance.
 
 These are **prereleases**, built from clean committed snapshots. Known

@@ -33,6 +33,6 @@ and user-facing error reporting. A successful package import does not prove that
 model was loaded, the selected provider initialized, or the returned audio is valid.
 Keep these checks distinct in production logs.
 
-Implementation: [ONNX package](https://github.com/dayour/kokoro-onnx/tree/main/src/kokoro_onnx),
-[Kokoro pipeline](https://github.com/dayour/kokoro/blob/main/kokoro/pipeline.py),
-[Misaki language modules](https://github.com/dayour/misaki/tree/main/misaki).
+Implementation: [ONNX package](https://github.com/DarbotLM/kokoro-onnx/tree/main/src/kokoro_onnx),
+[Kokoro pipeline](https://github.com/DarbotLM/kokoro/blob/main/kokoro/pipeline.py),
+[Misaki language modules](https://github.com/DarbotLM/misaki/tree/main/misaki).

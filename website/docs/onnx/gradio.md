@@ -7,7 +7,7 @@ uv run examples\app.py
 ```
 
 Read the model and voice requirements in
-[the example](https://github.com/dayour/kokoro-onnx/blob/main/examples/app.py)
+[the example](https://github.com/DarbotLM/kokoro-onnx/blob/main/examples/app.py)
 before launching. The script installs its declared Gradio 6.27+ dependencies.
 
 The demo provides text input, generated phonemes, audio playback/download, voice

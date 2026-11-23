@@ -4,7 +4,8 @@ description: Kokoro speech synthesis using ONNX Runtime on Python 3.14.
 ---
 
 [Complete speech-stack wiki](https://dayour.github.io/kokoro-onnx/) |
-[Fork releases](https://github.com/dayour/kokoro-onnx/releases)
+[Fork releases](https://github.com/DarbotLM/kokoro-onnx/releases) |
+[Latest Python 3.14 release](https://github.com/DarbotLM/kokoro-onnx/releases/tag/py314-2026.11.22)
 
 ![Python Version](https://img.shields.io/badge/python-3.14-blue)
 [![PyPI Release](https://img.shields.io/pypi/v/kokoro-onnx.svg)](https://pypi.org/project/kokoro-onnx/)
@@ -35,13 +36,16 @@ TTS with onnx runtime based on [Kokoro-TTS](https://huggingface.co/spaces/hexgra
 Use this Python 3.14 fork rather than the older published release:
 
 ```console
-git clone https://github.com/dayour/kokoro-onnx.git
+git clone https://github.com/DarbotLM/kokoro-onnx.git
 cd kokoro-onnx
 uv sync --locked
 ```
 
-The commands below describe upstream package installation; they do not install
-this fork until a corresponding package release is published.
+The `py314-2026.11.22` release provides the corrected Python 3.14 wheel and
+source distribution. Download from the fork release page or mirror the
+checksummed wheel into an authenticated installer. The upstream `pip install`
+name may still resolve a different package, so use the fork release asset for
+reproducible installations.
 
 For the corrected audio reconstruction, export a new model with this fork's
 [export workflow](BUILDING.md#audio-reconstruction) and the corrected sibling

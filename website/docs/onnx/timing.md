@@ -30,4 +30,4 @@ For a2swe, retain its existing frame-timing contract unless intentionally migrat
 it. Converting seconds to frames requires consistent rounding, frame rate, and
 inclusive/exclusive boundary rules.
 
-Source: [sliding synthesis and Timing](https://github.com/dayour/kokoro-onnx/blob/main/src/kokoro_onnx/sliding.py).
+Source: [sliding synthesis and Timing](https://github.com/DarbotLM/kokoro-onnx/blob/main/src/kokoro_onnx/sliding.py).

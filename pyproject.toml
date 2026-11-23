@@ -18,9 +18,9 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/dayour/kokoro-onnx"
-Repository = "https://github.com/dayour/kokoro-onnx"
-Issues = "https://github.com/dayour/kokoro-onnx/issues"
+Homepage = "https://github.com/DarbotLM/kokoro-onnx"
+Repository = "https://github.com/DarbotLM/kokoro-onnx"
+Issues = "https://github.com/DarbotLM/kokoro-onnx/issues"
 
 
 [project.optional-dependencies]

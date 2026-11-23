@@ -3,7 +3,7 @@ title: Kokoro ONNX overview
 ---
 
 `kokoro-onnx` is the MIT-licensed inference wrapper in
-[dayour/kokoro-onnx](https://github.com/dayour/kokoro-onnx). It loads a compatible
+[dayour/kokoro-onnx](https://github.com/DarbotLM/kokoro-onnx). It loads a compatible
 ONNX model and NumPy voice archive and produces mono float32 audio at 24 kHz.
 
 The core package supports synchronous synthesis, asynchronous chunk streaming,

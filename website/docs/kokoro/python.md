@@ -44,5 +44,5 @@ For paired wheel installs, supply both fork wheels in the same pip command.
 The pinned local-version Misaki requirement cannot be satisfied by substituting
 an unrelated upstream release.
 
-Source: [pipeline.py](https://github.com/dayour/kokoro/blob/main/kokoro/pipeline.py)
-and [CLI](https://github.com/dayour/kokoro/blob/main/kokoro/__main__.py).
+Source: [pipeline.py](https://github.com/DarbotLM/kokoro/blob/main/kokoro/pipeline.py)
+and [CLI](https://github.com/DarbotLM/kokoro/blob/main/kokoro/__main__.py).

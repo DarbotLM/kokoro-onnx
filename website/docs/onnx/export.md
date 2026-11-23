@@ -35,4 +35,4 @@ Archive source commit, model/config hashes, voice used for parity, runtime
 versions, active provider, and model precision. Do not claim waveform equivalence
 between quantized and full-precision output without a suitable evaluation.
 
-Source and exact flags: [scripts/export.py](https://github.com/dayour/kokoro-onnx/blob/main/scripts/export.py).
+Source and exact flags: [scripts/export.py](https://github.com/DarbotLM/kokoro-onnx/blob/main/scripts/export.py).

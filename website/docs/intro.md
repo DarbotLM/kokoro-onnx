@@ -31,6 +31,6 @@ site uses stable React 19.3 and Docusaurus 3.10.2.
 Use the sidebar or local search to browse the full wiki. Search runs in your
 browser; this site does not send documentation queries to an external AI service.
 
-Source repositories: [kokoro-onnx](https://github.com/dayour/kokoro-onnx),
-[kokoro](https://github.com/dayour/kokoro), and
-[misaki](https://github.com/dayour/misaki).
+Source repositories: [kokoro-onnx](https://github.com/DarbotLM/kokoro-onnx),
+[kokoro](https://github.com/DarbotLM/kokoro), and
+[misaki](https://github.com/DarbotLM/misaki).

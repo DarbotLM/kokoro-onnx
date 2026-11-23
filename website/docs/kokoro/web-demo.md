@@ -36,4 +36,4 @@ access on first use. Browser GPU availability, storage limits, content-security
 policy, and download CORS behavior affect deployment. This wiki is a separate
 static site and does not automatically deploy the speech demo.
 
-Source: [web demo](https://github.com/dayour/kokoro/tree/main/kokoro.js/demo).
+Source: [web demo](https://github.com/DarbotLM/kokoro/tree/main/kokoro.js/demo).

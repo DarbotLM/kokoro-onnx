@@ -2,7 +2,7 @@
 title: Misaki pronunciation engine
 ---
 
-[Misaki](https://github.com/dayour/misaki) converts graphemes to phonemes for
+[Misaki](https://github.com/DarbotLM/misaki) converts graphemes to phonemes for
 speech synthesis. It does not generate audio on its own. This fork identifies as
 `0.9.4+py314.1` and requires Python 3.14.
 

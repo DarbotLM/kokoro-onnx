@@ -2,7 +2,7 @@
 title: ONNX Python API
 ---
 
-Source: [`Kokoro`](https://github.com/dayour/kokoro-onnx/blob/main/src/kokoro_onnx/__init__.py).
+Source: [`Kokoro`](https://github.com/DarbotLM/kokoro-onnx/blob/main/src/kokoro_onnx/__init__.py).
 
 ## Construction
 
@@ -19,8 +19,15 @@ An injected session must still match the runtime's model I/O contract.
 
 ```python
 audio, sample_rate = tts.create(
-    text, voice, speed=1.0, lang="en-us", is_phonemes=False,
-    trim=True, sentence_pause=0.25, clause_pause=0.1, continuous=False,
+    text,
+    voice,
+    speed=1.0,
+    lang="en-us",
+    is_phonemes=False,
+    trim=True,
+    sentence_pause=0.25,
+    clause_pause=0.1,
+    continuous=False,
 )
 ```
 

@@ -2,7 +2,7 @@
 title: Integrating a2swe narration
 ---
 
-[a2swe](https://github.com/dayour/a2swe) is a Remotion/React/TypeScript video
+[a2swe](https://github.com/DarbotLM/a2swe) is a Remotion/React/TypeScript video
 production toolkit. It uses the Python speech stack for approved narration,
 then resamples audio and generates project-specific frame timing.
 
