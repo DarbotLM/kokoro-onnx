@@ -22,7 +22,7 @@ mirror without changing the project lock.
 
 A clean source build is not a claim that every platform/model is production-ready.
 Retain the documented compatibility limitations in GitHub release notes.
-See the [release guide](https://dayour.github.io/kokoro-onnx/releases/).
+See the [release guide](https://darbotlm.github.io/kokoro-onnx/releases/).
 
 ## Publish new version
 

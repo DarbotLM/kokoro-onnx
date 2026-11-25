@@ -24,7 +24,14 @@ deployments publish the static artifact through the protected `github-pages`
 environment using OIDC and `pages: write`.
 
 Repository Settings / Pages must select **GitHub Actions** as the build source.
-The site address is `https://dayour.github.io/kokoro-onnx/`.
+The shared site address is `https://darbotlm.github.io/kokoro-onnx/`.
+Kokoro and Misaki use this wiki rather than publishing separate sites.
+
+For a Windows preview, dispatch `Documentation Pages` on `main` with
+`local_preview=true`. This checks the documentation on the existing
+`darbotlm-win11-private` group and uploads `documentation-preview`; it does
+not deploy or cancel a Pages deployment. This option requires the group to
+allow this repository. Pull requests use GitHub-hosted runners.
 
 After deployment, verify the home page, a deep route, local search, sidebar/mobile
 navigation, keyboard focus, and both color modes. Check the workflow result and

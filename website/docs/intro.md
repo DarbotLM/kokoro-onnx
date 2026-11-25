@@ -1,10 +1,10 @@
 ---
 slug: /
 title: Kokoro speech stack wiki
-description: Installation, APIs, production operations, and integration guidance for the dayour Python 3.14 Kokoro forks.
+description: Installation, APIs, production operations, and integration guidance for the DarbotLM Python 3.14 Kokoro forks.
 ---
 
-This wiki covers the **dayour** forks of Kokoro ONNX, Kokoro, and Misaki. It is
+This wiki covers the **DarbotLM** forks of Kokoro ONNX, Kokoro, and Misaki. It is
 maintained alongside the ONNX runtime and describes the fork behavior, not an
 assumption that the upstream PyPI packages contain these changes.
 

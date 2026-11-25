@@ -3,7 +3,7 @@ title: kokoro-onnx
 description: Kokoro speech synthesis using ONNX Runtime on Python 3.14.
 ---
 
-[Complete speech-stack wiki](https://dayour.github.io/kokoro-onnx/) |
+[Complete speech-stack wiki](https://darbotlm.github.io/kokoro-onnx/) |
 [Fork releases](https://github.com/DarbotLM/kokoro-onnx/releases) |
 [Latest Python 3.14 release](https://github.com/DarbotLM/kokoro-onnx/releases/tag/py314-2026.11.22)
 
